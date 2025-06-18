@@ -21,8 +21,7 @@ import Logout from "./logout";
 import Wallet from "./wallet";
 
 export default function Index() {
-  const { createAuthSession, status, user } = useCrossmintAuth();
-  const { getOrCreateWallet, wallet } = useWallet();
+  const { createAuthSession, status } = useCrossmintAuth();
   const url = Linking.useURL();
   const [activeTab, setActiveTab] = useState<TabKey>("wallet");
 
@@ -31,12 +30,6 @@ export default function Index() {
       createAuthSession(url);
     }
   }, [url, createAuthSession]);
-
-  useEffect(() => {
-    if (wallet == null && user != null) {
-      getOrCreateWallet({ chain: "solana", signer: { type: "api-key" } });
-    }
-  }, [wallet, getOrCreateWallet, user]);
 
   if (status === "initializing") {
     return (

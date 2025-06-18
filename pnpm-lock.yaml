@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@crossmint/client-sdk-react-native-ui':
-        specifier: ^0.6.2
-        version: 0.6.2(@types/react@19.0.14)(bufferutil@4.0.9)(expo@53.0.11(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10)))(bufferutil@4.0.9)(react-native-webview@13.13.5(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(utf-8-validate@5.0.10))(react-dom@19.0.0(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.23.6(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4))(zod@3.22.4)
+        specifier: ^0.7.0
+        version: 0.7.0(@types/react@19.0.14)(bufferutil@4.0.9)(expo@53.0.11(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10)))(bufferutil@4.0.9)(react-native-webview@13.13.5(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(utf-8-validate@5.0.10))(react-dom@19.0.0(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.23.6(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4))(zod@3.22.4)
       '@expo/vector-icons':
         specifier: ^14.1.0
         version: 14.1.0(expo-font@13.3.1(expo@53.0.11(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10)))(bufferutil@4.0.9)(react-native-webview@13.13.5(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)
@@ -664,13 +664,13 @@ packages:
   '@crossmint/client-sdk-base@1.5.6':
     resolution: {integrity: sha512-SS4ln+zQWgLV4gqd/POgnXtLgFq7esnD1Hs4gSDr4zkwM5hFSdJn4AVefrQhwl5+yvYrR/6n8Urmaf4Y/y2UeA==}
 
-  '@crossmint/client-sdk-react-base@0.5.2':
-    resolution: {integrity: sha512-jm9Ij4GuB0BwAAc2N2fXH3uSb/SIdZ+dd63rPvi6IgWIuE8XsmRQ2bazw6lauQv9znj10N5M2oCg00PDjsAmyQ==}
+  '@crossmint/client-sdk-react-base@0.5.3':
+    resolution: {integrity: sha512-m5ea48D5WJ9ZmD/5Wwrn7OSV3951It/ZUm+bfdfwXKlLHI25hezYeX0e/LeVtE6dl6Vkp4FRn0scA+dvG1niNA==}
     peerDependencies:
       react: '>=17.0.2'
 
-  '@crossmint/client-sdk-react-native-ui@0.6.2':
-    resolution: {integrity: sha512-WIm4fX0Xh6j8U+XkFiZU8fvHD2JBjiJb5vTxP73PeF+vsP6oWyIIYL2MDDWSeBqz+3elK8Vbrjq51FZnDVMTkw==}
+  '@crossmint/client-sdk-react-native-ui@0.7.0':
+    resolution: {integrity: sha512-Aq1D4oTs5WeuwNXEq7p8vsu8lrCHj1JD0sjx1csCM3Dl+4Z25jDCUH9FC/svCQxHQOXMovCbVf0mfH9fMIo6Iw==}
     peerDependencies:
       react: '>=17.0.2'
       react-native: '>=0.74.3'
@@ -693,8 +693,8 @@ packages:
   '@crossmint/common-sdk-base@0.8.0':
     resolution: {integrity: sha512-z6hh3cSkIg3nB0gbFpjJdtBarzXuqGB+nI4O9+Wxif941yVO25lXaWqtZV/4DPd0MxCuu9KGSyTWn6PU9wMZqA==}
 
-  '@crossmint/wallets-sdk@0.10.2':
-    resolution: {integrity: sha512-4qNeAVXMhLWm8LIa2/5dVeBP+EWwWX08UPeKlKNVGn+OV0Yq8V9vfT7ixs9iPBPRkDjWgmueu9WJWc3XablwLQ==}
+  '@crossmint/wallets-sdk@0.10.3':
+    resolution: {integrity: sha512-OhOZIcvpJSVBYN4bDZ54Sq4osYWRdcCpNZZ1NcCxInGlzTBDu3xUcyxeWnRv8wy3gCGWekePcbeQbgHt6kamFQ==}
 
   '@datadog/browser-core@4.42.2':
     resolution: {integrity: sha512-LnkcdFyNRpMEuvV1ePfKdgRvYh+VqqAiVRoAmgObcuzdYdIwQSfcJp4GFbBgr5v7uF2uhAp/b96MIyKlqi0Ixg==}
@@ -5865,13 +5865,13 @@ snapshots:
       - typescript
       - utf-8-validate
 
-  '@crossmint/client-sdk-react-base@0.5.2(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)':
+  '@crossmint/client-sdk-react-base@0.5.3(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)':
     dependencies:
       '@crossmint/client-sdk-base': 1.5.6(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)
       '@crossmint/client-sdk-window': 1.0.0
       '@crossmint/client-signers': 0.0.17
       '@crossmint/common-sdk-base': 0.8.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
-      '@crossmint/wallets-sdk': 0.10.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
+      '@crossmint/wallets-sdk': 0.10.3(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
       lodash.isequal: 4.5.0
       react: 19.0.0
     transitivePeerDependencies:
@@ -5882,16 +5882,16 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@crossmint/client-sdk-react-native-ui@0.6.2(@types/react@19.0.14)(bufferutil@4.0.9)(expo@53.0.11(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10)))(bufferutil@4.0.9)(react-native-webview@13.13.5(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(utf-8-validate@5.0.10))(react-dom@19.0.0(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.23.6(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4))(zod@3.22.4)':
+  '@crossmint/client-sdk-react-native-ui@0.7.0(@types/react@19.0.14)(bufferutil@4.0.9)(expo@53.0.11(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10)))(bufferutil@4.0.9)(react-native-webview@13.13.5(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(utf-8-validate@5.0.10))(react-dom@19.0.0(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.23.6(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4))(zod@3.22.4)':
     dependencies:
       '@crossmint/client-sdk-auth': 1.2.14(@types/react@19.0.14)(bufferutil@4.0.9)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(viem@2.23.6(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4))(zod@3.22.4)
       '@crossmint/client-sdk-base': 1.5.6(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)
-      '@crossmint/client-sdk-react-base': 0.5.2(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
+      '@crossmint/client-sdk-react-base': 0.5.3(bufferutil@4.0.9)(react@19.0.0)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
       '@crossmint/client-sdk-rn-window': 0.2.2(react-native-webview@13.12.5(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react@19.0.0)
       '@crossmint/client-signers': 0.0.17
       '@crossmint/common-sdk-auth': 1.0.37(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
       '@crossmint/common-sdk-base': 0.8.0(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
-      '@crossmint/wallets-sdk': 0.10.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
+      '@crossmint/wallets-sdk': 0.10.3(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)
       '@solana/web3.js': 1.98.0(bufferutil@4.0.9)(utf-8-validate@5.0.10)
       bs58: 5.0.0
       expo-constants: 17.0.8(expo@53.0.11(@babel/core@7.26.10)(@expo/metro-runtime@5.0.4(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10)))(bufferutil@4.0.9)(react-native-webview@13.13.5(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))(react@19.0.0)(utf-8-validate@5.0.10))(react-native@0.79.3(@babel/core@7.26.10)(@types/react@19.0.14)(bufferutil@4.0.9)(react@19.0.0)(utf-8-validate@5.0.10))
@@ -5954,7 +5954,7 @@ snapshots:
       - utf-8-validate
       - zod
 
-  '@crossmint/wallets-sdk@0.10.2(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)':
+  '@crossmint/wallets-sdk@0.10.3(bufferutil@4.0.9)(typescript@5.8.3)(utf-8-validate@5.0.10)(zod@3.22.4)':
     dependencies:
       '@crossmint/client-sdk-window': 1.0.0
       '@crossmint/client-signers': 0.0.17
