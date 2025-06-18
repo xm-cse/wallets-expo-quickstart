@@ -2,23 +2,18 @@
 <img width="200" alt="Image" src="https://github.com/user-attachments/assets/8b617791-cd37-4a5a-8695-a7c9018b7c70" />
 <br>
 <br>
-<h1>Solana Wallets Expo Quickstart</h1>
+<h1>Wallets Expo Quickstart</h1>
 
 <div align="center">
-<a href="https://solana-wallets.demos-crossmint.com/">Live Demo</a> | <a href="https://docs.crossmint.com/introduction/platform/wallets">Docs</a> | <a href="https://github.com/crossmint">See all quickstarts</a>
+<a href="https://docs.crossmint.com/introduction/platform/wallets">Docs</a> | <a href="https://crossmint.com/quickstarts">See all quickstarts</a>
 </div>
-
-<br>
-<br>
-<img src="https://github.com/user-attachments/assets/76a983ab-499e-4d12-af7a-0ae17cb0b6cd" alt="Image" width="full">
 </div>
 
 ## Introduction
 
-Create and interact with Crossmint wallets in Solana using Crossmint Auth to handle user authentication.
+Create and interact with Crossmint wallets using Crossmint Auth to handle user authentication.
 
 **Learn how to:**
-
 - Create a wallet
 - View its balance for SOL and SPL tokens
 - Send a transaction
@@ -29,7 +24,7 @@ Create and interact with Crossmint wallets in Solana using Crossmint Auth to han
 1. Clone the repository and navigate to the project folder:
 
 ```bash
-git clone https://github.com/crossmint/solana-wallets-expo-quickstart.git && cd solana-wallets-expo-quickstart
+git clone https://github.com/crossmint/wallets-expo-quickstart.git && cd wallets-expo-quickstart
 ```
 
 2. Install all dependencies:
@@ -52,11 +47,9 @@ cp .env.template .env
 
 4. Set up your Crossmint client API key:
 
-   a. Generate a Crossmint client API key from [here](https://docs.crossmint.com/introduction/platform/api-keys/client-side).
+   a. Create a developer account in the Crossmint [Staging Console](https://staging.crossmint.com/console). Open that link, sign in, and accept the dialog to continue.
 
-   b. Make sure your API key has the following scopes: `users.create`, `users.read`, `wallets.read`, `wallets.create`, `wallets:transactions.create`, `wallets:transactions.sign`, `wallets:balance.read`, `wallets.fund`.
-
-   c. To authenticate requests from your app, whitelist the app domain by selecting "Mobile" under "App type" and entering your iOS bundle ID and Android package name from `app.json` (by default this quickstart uses "com.crossmint.solana.wallets").
+   b. Get the **client API key** from the overview page of your project.
 
 5. Add the API key to the `.env` file.
 
@@ -64,28 +57,19 @@ cp .env.template .env
 EXPO_PUBLIC_CLIENT_CROSSMINT_API_KEY=your_api_key
 ```
 
-6. Run the development server:
+6. Run the app:
 
 ```bash
-npm run start
-# or
-yarn start
-# or
-pnpm start
-# or
-bun start
+npx expo run:ios && npx expo run:android
 ```
 
-Note: When running an iOS development build, make sure you're running the latest version on the simulator (>iOS 18).
 
 ## Using in production
 
 1. Create a [production API key](https://docs.crossmint.com/introduction/platform/api-keys/client-side).
 
-## Errors when running in iOS simulator
-
-If you encounter errors trying to run the expo app on iOS, try running:
+2. Add the API key to the `.env` file.
 
 ```bash
-npx expo install --fix
+EXPO_PUBLIC_CLIENT_CROSSMINT_API_KEY=your_api_key
 ```
