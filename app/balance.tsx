@@ -75,7 +75,7 @@ export default function Balance() {
           <View style={styles.tokenInfo}>
             <View style={styles.iconContainer}>
               <Image
-                source={require("../assets/images/solana.png")}
+                source={require(`../assets/images/sol.png`)}
                 style={styles.tokenIcon}
               />
             </View>
@@ -92,7 +92,7 @@ export default function Balance() {
           <View style={styles.tokenInfo}>
             <View style={styles.iconContainer}>
               <Image
-                source={require("../assets/images/usdc.png")}
+                source={require(`../assets/images/usdc.png`)}
                 style={styles.tokenIcon}
               />
             </View>
@@ -109,7 +109,7 @@ export default function Balance() {
         >
           <View style={styles.buttonIconContainer}>
             <Image
-              source={require("../assets/images/solana.png")}
+              source={require("../assets/images/sol.png")}
               style={styles.buttonIcon}
             />
           </View>
