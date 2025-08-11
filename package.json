@@ -14,11 +14,12 @@
 		"preset": "jest-expo"
 	},
 	"dependencies": {
-		"@crossmint/client-sdk-react-native-ui": "^0.8.5",
+		"@crossmint/client-sdk-react-native-ui": "^0.10.1",
 		"@expo/vector-icons": "^14.1.0",
 		"@react-navigation/bottom-tabs": "^7.3.10",
 		"@react-navigation/elements": "^2.3.8",
 		"@react-navigation/native": "^7.1.6",
+		"buffer": "^6.0.3",
 		"expo": "~53.0.10",
 		"expo-blur": "~14.1.5",
 		"expo-clipboard": "^7.1.4",
@@ -39,12 +40,14 @@
 		"react-dom": "19.0.0",
 		"react-native": "0.79.3",
 		"react-native-gesture-handler": "~2.24.0",
+		"react-native-get-random-values": "^1.11.0",
 		"react-native-keyboard-aware-scroll-view": "^0.9.5",
 		"react-native-reanimated": "~3.17.4",
 		"react-native-safe-area-context": "5.4.0",
 		"react-native-screens": "~4.11.1",
 		"react-native-web": "~0.20.0",
-		"react-native-webview": "13.13.5"
+		"react-native-webview": "13.13.5",
+		"stream-browserify": "^3.0.0"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.26.10",
