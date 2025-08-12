@@ -9,11 +9,14 @@ import {
   ScrollView,
   RefreshControl,
 } from "react-native";
-import { useWallet, Balances } from "@crossmint/client-sdk-react-native-ui";
+import {
+  useWallet,
+  type Balances,
+} from "@crossmint/client-sdk-react-native-ui";
 import { Linking } from "react-native";
 
 const formatBalance = (amount: string) => {
-  return parseFloat(amount).toFixed(2);
+  return Number.parseFloat(amount).toFixed(2);
 };
 
 let balancesCache: Balances | null = null;
@@ -32,7 +35,6 @@ export default function Balance() {
       setBalances(balances);
       balancesCache = balances;
     } catch (error) {
-      console.error("Error fetching wallet balances:", error);
       Alert.alert("Error fetching wallet balances", `${error}`);
     }
   }, [wallet]);
@@ -75,14 +77,15 @@ export default function Balance() {
           <View style={styles.tokenInfo}>
             <View style={styles.iconContainer}>
               <Image
-                source={require(`../assets/images/sol.png`)}
+                source={require("../assets/images/sol.png")}
                 style={styles.tokenIcon}
               />
             </View>
             <Text style={styles.tokenSymbol}>SOL</Text>
           </View>
           <Text style={styles.tokenBalance}>
-            {formatBalance(balances?.nativeToken.amount || "0")} {balances?.nativeToken.symbol}
+            {formatBalance(balances?.nativeToken.amount || "0")}{" "}
+            {balances?.nativeToken.symbol}
           </Text>
         </View>
 
@@ -92,13 +95,15 @@ export default function Balance() {
           <View style={styles.tokenInfo}>
             <View style={styles.iconContainer}>
               <Image
-                source={require(`../assets/images/usdc.png`)}
+                source={require("../assets/images/usdc.png")}
                 style={styles.tokenIcon}
               />
             </View>
             <Text style={styles.tokenSymbol}>USDC</Text>
           </View>
-          <Text style={styles.tokenBalance}>${formatBalance(balances?.usdc.amount || "0")}</Text>
+          <Text style={styles.tokenBalance}>
+            ${formatBalance(balances?.usdc.amount || "0")}
+          </Text>
         </View>
       </View>
 

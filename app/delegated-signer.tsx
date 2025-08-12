@@ -55,7 +55,6 @@ export default function DelegateSigners() {
       const signers = await wallet.delegatedSigners();
       setDelegatedSigners(signers);
     } catch (err) {
-      console.error("Delegated Signer: ", err);
       Alert.alert("Error adding delegated signer", `${err}`);
     } finally {
       setNewSigner("");

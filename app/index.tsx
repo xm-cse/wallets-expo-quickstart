@@ -9,21 +9,30 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { Redirect } from "expo-router";
-import {
-  useCrossmintAuth,
-  useWallet,
-} from "@crossmint/client-sdk-react-native-ui";
+import { useCrossmintAuth } from "@crossmint/client-sdk-react-native-ui";
 import * as Linking from "expo-linking";
 import Balance from "./balance";
 import Transfer from "./transfer";
 import DelegatedSigners from "./delegated-signer";
 import Logout from "./logout";
 import Wallet from "./wallet";
+import OTPModal from "../components/otp-modal";
+import { useOTPVerification } from "../hooks/use-otp-verification";
 
 export default function Index() {
   const { createAuthSession, status } = useCrossmintAuth();
-  const url = Linking.useURL();
+  const url = Linking.useLinkingURL();
   const [activeTab, setActiveTab] = useState<TabKey>("wallet");
+  
+  // OTP verification hook
+  const {
+    isVerifyingOTP,
+    otpCode,
+    isVerifyingCode,
+    setOtpCode,
+    handleVerifyOTP,
+    handleCancelOTP,
+  } = useOTPVerification();
 
   useEffect(() => {
     if (url != null) {
@@ -73,6 +82,15 @@ export default function Index() {
           </View>
         </View>
       </View>
+      
+      <OTPModal
+        visible={isVerifyingOTP}
+        otpCode={otpCode}
+        isVerifying={isVerifyingCode}
+        onOtpCodeChange={setOtpCode}
+        onVerifyOTP={handleVerifyOTP}
+        onCancel={handleCancelOTP}
+      />
     </SafeAreaView>
   );
 }
