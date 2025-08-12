@@ -8,8 +8,8 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from "react-native";
-import { useCrossmintAuth } from "@crossmint/client-sdk-react-native-ui";
 import { router } from "expo-router";
+import { useCrossmintAuth } from "@crossmint/client-sdk-react-native-ui";
 
 export default function Login() {
   const { loginWithOAuth, createAuthSession, user, crossmintAuth } =

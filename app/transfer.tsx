@@ -29,7 +29,11 @@ export default function Transfer() {
 
     try {
       setIsPending(true);
-      const { hash, explorerLink } = await wallet.send(recipientAddress, selectedToken, amount);
+      const { hash, explorerLink } = await wallet.send(
+        recipientAddress,
+        selectedToken,
+        amount
+      );
       if (hash) {
         setTxHash(hash);
         setExplorerLink(explorerLink);
@@ -59,7 +63,9 @@ export default function Transfer() {
           <Text style={styles.successText}>Transfer successful!</Text>
           <TouchableOpacity
             onPress={() =>
-              Linking.openURL(explorerLink || `https://solscan.io/tx/${txHash}?cluster=devnet`)
+              Linking.openURL(
+                explorerLink || `https://solscan.io/tx/${txHash}?cluster=devnet`
+              )
             }
           >
             <Text style={styles.signatureText}>View on Solscan</Text>
