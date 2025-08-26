@@ -19,7 +19,7 @@ export default function CrossmintProviders({ children }: ProvidersProps) {
       <CrossmintAuthProvider>
         <CrossmintWalletProvider
           createOnLogin={{
-            chain: "solana",
+            chain: "flow-testnet",
             signer: {
               type: "email",
             },

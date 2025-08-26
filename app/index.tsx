@@ -14,6 +14,7 @@ import * as Linking from "expo-linking";
 import Balance from "./balance";
 import Transfer from "./transfer";
 import DelegatedSigners from "./delegated-signer";
+import SignMessage from "./sign-message";
 import Logout from "./logout";
 import Wallet from "./wallet";
 import OTPModal from "../components/otp-modal";
@@ -79,6 +80,7 @@ export default function Index() {
             {activeTab === "wallet" && <Balance />}
             {activeTab === "transfer" && <Transfer />}
             {activeTab === "signers" && <DelegatedSigners />}
+            {activeTab === "sign" && <SignMessage />}
           </View>
         </View>
       </View>
@@ -104,9 +106,10 @@ const TABS: TabItem[] = [
   { key: "wallet", label: "Balance" },
   { key: "transfer", label: "Transfer" },
   { key: "signers", label: "Signers" },
+  { key: "sign", label: "Sign" },
 ];
 
-type TabKey = "wallet" | "transfer" | "signers";
+type TabKey = "wallet" | "transfer" | "signers" | "sign";
 
 function TabNavigation({
   tabs,
