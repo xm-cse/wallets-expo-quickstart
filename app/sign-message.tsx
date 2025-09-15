@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -10,12 +10,27 @@ import {
   ScrollView,
 } from "react-native";
 import { useWallet } from "@crossmint/client-sdk-react-native-ui";
+import { useFlowSigner } from "@/providers/FlowWalletProvider";
+import * as Crypto from "expo-crypto";
 
 export default function SignMessage() {
   const { wallet } = useWallet();
+  // new hook
+  const { signRaw, derivePublicKey } = useFlowSigner();
   const [message, setMessage] = useState("Hello Flow");
   const [signature, setSignature] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [publicKey, setPublicKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPublicKey = async () => {
+      const result = await derivePublicKey();
+      // eslint-disable-next-line no-console
+      console.log("Public key:", result);
+      setPublicKey(result.publicKey.bytes);
+    };
+    fetchPublicKey();
+  }, [derivePublicKey]);
 
   const signMessage = useCallback(async () => {
     if (!wallet || !message) return;
@@ -23,17 +38,27 @@ export default function SignMessage() {
     try {
       setLoading(true);
 
-      // sign message: returns 65-byte Ethereum signature
-      const result = await wallet.signer.signMessage(message);
+      // Hash the message to 32 bytes (SHA-256)
+      const messageHash = await Crypto.digestStringAsync(
+        Crypto.CryptoDigestAlgorithm.SHA256,
+        message,
+        { encoding: Crypto.CryptoEncoding.HEX }
+      );
+
+      // eslint-disable-next-line no-console
+      console.log("=== Crossmint -> Flow Test ===");
+      // eslint-disable-next-line no-console
+      console.log("Original message:", message);
+      // eslint-disable-next-line no-console
+      console.log("SHA-256 hash:", messageHash);
+
+      // Pass the 64-character hex hash to signRaw
+      const result = await signRaw(messageHash);
       const sig = result.signature.toString();
 
-      // for flow cadence: remove last byte (v) to get 64 bytes
-      const cadenceSig = sig.slice(0, -2);
-
-      console.log("=== Crossmint -> Flow Test ===");
-      console.log("Message:", message);
-      console.log("Signature (65 bytes):", sig);
-      console.log("Cadence format (64 bytes):", cadenceSig);
+      // eslint-disable-next-line no-console
+      console.log("Signature:", sig);
+      // eslint-disable-next-line no-console
       console.log("Signer address:", wallet.signer.locator());
 
       setSignature(sig);
@@ -42,7 +67,7 @@ export default function SignMessage() {
     } finally {
       setLoading(false);
     }
-  }, [wallet, message]);
+  }, [wallet, message, signRaw]);
 
   if (!wallet) {
     return (
@@ -58,7 +83,9 @@ export default function SignMessage() {
 
       <View style={styles.infoBox}>
         <Text style={styles.infoText}>
-          {`• We sign with Ethereum format (65 bytes)\n• Uses Keccak256 + secp256k1\n• Adds prefix: "\x19Ethereum Signed Message:"`}
+          {
+            "• Message is SHA-256 hashed to 32 bytes\n• Signed with secp256k1 curve\n• Raw signing - no prefixes added"
+          }
         </Text>
       </View>
 
@@ -81,16 +108,20 @@ export default function SignMessage() {
         )}
       </TouchableOpacity>
 
+      {publicKey && (
+        <View style={styles.resultBox}>
+          <Text style={styles.label}>Public key:</Text>
+          <Text style={styles.signature} numberOfLines={3}>
+            {publicKey}
+          </Text>
+        </View>
+      )}
+
       {signature && (
         <View style={styles.resultBox}>
           <Text style={styles.label}>Signature:</Text>
           <Text style={styles.signature} numberOfLines={3}>
             {signature}
-          </Text>
-
-          <Text style={styles.label}>For Cadence (remove last byte):</Text>
-          <Text style={styles.signature} numberOfLines={3}>
-            {signature.slice(0, -2)}
           </Text>
         </View>
       )}
