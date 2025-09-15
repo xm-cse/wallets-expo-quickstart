@@ -14,7 +14,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@crossmint/client-sdk-react-native-ui": "^0.10.5",
+    "@crossmint/client-sdk-react-native-ui": "^0.10.15",
     "@expo/vector-icons": "^14.1.0",
     "@react-navigation/bottom-tabs": "^7.3.10",
     "@react-navigation/elements": "^2.3.8",
@@ -24,6 +24,7 @@
     "expo-blur": "~14.1.5",
     "expo-clipboard": "^7.1.4",
     "expo-constants": "~17.1.6",
+    "expo-crypto": "^15.0.7",
     "expo-device": "^7.1.4",
     "expo-font": "~13.3.1",
     "expo-haptics": "~14.1.4",

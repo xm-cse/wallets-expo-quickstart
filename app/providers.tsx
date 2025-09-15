@@ -3,6 +3,7 @@ import {
   CrossmintProvider,
   CrossmintWalletProvider,
 } from "@crossmint/client-sdk-react-native-ui";
+import { FlowWalletProvider } from "@/providers/FlowWalletProvider";
 
 type ProvidersProps = {
   children: React.ReactNode;
@@ -25,7 +26,7 @@ export default function CrossmintProviders({ children }: ProvidersProps) {
             },
           }}
         >
-          {children}
+          <FlowWalletProvider>{children}</FlowWalletProvider>
         </CrossmintWalletProvider>
       </CrossmintAuthProvider>
     </CrossmintProvider>
