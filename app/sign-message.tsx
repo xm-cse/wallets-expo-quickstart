@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import {
   View,
   Text,
@@ -16,10 +16,21 @@ import * as Crypto from "expo-crypto";
 export default function SignMessage() {
   const { wallet } = useWallet();
   // new hook
-  const { signRaw } = useFlowSigner();
+  const { signRaw, derivePublicKey } = useFlowSigner();
   const [message, setMessage] = useState("Hello Flow");
   const [signature, setSignature] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [publicKey, setPublicKey] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPublicKey = async () => {
+      const result = await derivePublicKey();
+      // eslint-disable-next-line no-console
+      console.log("Public key:", result);
+      setPublicKey(result.publicKey.bytes);
+    };
+    fetchPublicKey();
+  }, [derivePublicKey]);
 
   const signMessage = useCallback(async () => {
     if (!wallet || !message) return;
@@ -96,6 +107,15 @@ export default function SignMessage() {
           <Text style={styles.buttonText}>Sign Message</Text>
         )}
       </TouchableOpacity>
+
+      {publicKey && (
+        <View style={styles.resultBox}>
+          <Text style={styles.label}>Public key:</Text>
+          <Text style={styles.signature} numberOfLines={3}>
+            {publicKey}
+          </Text>
+        </View>
+      )}
 
       {signature && (
         <View style={styles.resultBox}>

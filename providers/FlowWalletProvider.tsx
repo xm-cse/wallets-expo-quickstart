@@ -7,8 +7,17 @@ import type {
   PhoneInternalSignerConfig,
 } from "@/signers/types";
 
+type PublicKeyResponse = {
+  publicKey: {
+    bytes: string;
+    encoding: string;
+    keyType: "secp256k1" | "ed25519";
+  };
+};
+
 type FlowSignerContext = {
   signRaw: (message: string) => Promise<{ signature: string }>;
+  derivePublicKey: () => Promise<PublicKeyResponse>;
 };
 
 const FlowSignerContext = createContext<FlowSignerContext | null>(null);
@@ -70,7 +79,31 @@ export function FlowWalletProvider({ children }: FlowWalletProviderProps) {
     [crossmint, clientTEEConnection, onAuthRequired, wallet]
   );
 
-  const contextValue = { signRaw };
+  const derivePublicKey = useCallback(async () => {
+    if (!wallet) {
+      throw new Error(
+        "Wallet not properly initialized. Make sure you are within CrossmintWalletProvider."
+      );
+    }
+    const response = await wallet
+      .experimental_apiClient()
+      .post("api/v1/signers/derive-public-key", {
+        body: JSON.stringify({
+          authId: wallet.signer.locator(),
+          keyType: "secp256k1",
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message);
+    }
+    return (await response.json()) as PublicKeyResponse;
+  }, [wallet]);
+
+  const contextValue = { signRaw, derivePublicKey };
 
   return (
     <FlowSignerContext.Provider value={contextValue}>
