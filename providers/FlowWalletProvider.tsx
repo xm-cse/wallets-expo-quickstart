@@ -1,4 +1,10 @@
-import { createContext, useContext, useCallback, useRef } from "react";
+import {
+  createContext,
+  useContext,
+  useCallback,
+  useRef,
+  useEffect,
+} from "react";
 import type { ReactNode } from "react";
 import { useWallet, useCrossmint } from "@crossmint/client-sdk-react-native-ui";
 import { FlowNonCustodialSigner } from "@/signers/ncs-flow-signer";
@@ -33,51 +39,49 @@ export function FlowWalletProvider({ children }: FlowWalletProviderProps) {
   // Store the current signer instance
   const currentSignerRef = useRef<FlowNonCustodialSigner | null>(null);
 
-  const signRaw = useCallback(
-    async (message: string): Promise<{ signature: string }> => {
-      // Create signer if it doesn't exist
-      if (!currentSignerRef.current) {
-        if (!clientTEEConnection || !onAuthRequired || !wallet) {
-          throw new Error(
-            "Wallet not properly initialized. Make sure you are within CrossmintWalletProvider."
-          );
-        }
-
-        // Get signer info directly from wallet
-        const signerLocator = wallet.signer.locator();
-        const signerType = signerLocator.startsWith("email:")
-          ? "email"
-          : "phone";
-        const signerValue = signerLocator.split(":")[1];
-
-        const config: EmailInternalSignerConfig | PhoneInternalSignerConfig =
-          signerType === "email"
-            ? {
-                type: "email",
-                email: signerValue,
-                locator: signerLocator,
-                address: wallet.address,
-                crossmint,
-                clientTEEConnection: clientTEEConnection(),
-                onAuthRequired,
-              }
-            : {
-                type: "phone",
-                phone: signerValue,
-                locator: signerLocator,
-                address: wallet.address,
-                crossmint,
-                clientTEEConnection: clientTEEConnection(),
-                onAuthRequired,
-              };
-
-        currentSignerRef.current = new FlowNonCustodialSigner(config);
+  useEffect(() => {
+    // Create signer if it doesn't exist
+    if (!currentSignerRef.current) {
+      if (!onAuthRequired || !wallet) {
+        return;
       }
 
-      return currentSignerRef.current.signRaw(message);
-    },
-    [crossmint, clientTEEConnection, onAuthRequired, wallet]
-  );
+      // Get signer info directly from wallet
+      const signerLocator = wallet.signer.locator();
+      const signerType = signerLocator.startsWith("email:") ? "email" : "phone";
+      const signerValue = signerLocator.split(":")[1];
+
+      const config: EmailInternalSignerConfig | PhoneInternalSignerConfig =
+        signerType === "email"
+          ? {
+              type: "email",
+              email: signerValue,
+              locator: signerLocator,
+              address: wallet.address,
+              crossmint,
+              onAuthRequired,
+              clientTEEConnection: clientTEEConnection?.(),
+            }
+          : {
+              type: "phone",
+              phone: signerValue,
+              locator: signerLocator,
+              address: wallet.address,
+              crossmint,
+              onAuthRequired,
+              clientTEEConnection: clientTEEConnection?.(),
+            };
+
+      currentSignerRef.current = new FlowNonCustodialSigner(config);
+    }
+  }, [onAuthRequired, wallet, crossmint, clientTEEConnection]);
+
+  const signRaw = async (message: string): Promise<{ signature: string }> => {
+    if (!currentSignerRef.current) {
+      throw new Error("Signer not initialized");
+    }
+    return currentSignerRef.current.signRaw(message);
+  };
 
   const derivePublicKey = useCallback(async () => {
     if (!wallet) {
