@@ -1,8 +1,10 @@
+import { NcsIframeManager } from "@/signers/ncs-iframe-manager";
 import {
   AuthRejectedError,
   type EmailInternalSignerConfig,
   type PhoneInternalSignerConfig,
 } from "@/signers/types";
+import { validateAPIKey } from "@crossmint/common-sdk-base";
 
 const DEFAULT_EVENT_OPTIONS = {
   timeoutMs: 10_000,
@@ -22,10 +24,21 @@ export class FlowNonCustodialSigner {
     private config: EmailInternalSignerConfig | PhoneInternalSignerConfig
   ) {
     this.type = config.type;
+    this.config.clientTEEConnection = config.clientTEEConnection;
+    this.initialize();
+  }
+
+  private async initialize() {
+    // Initialize iframe if no custom handshake parent is provided
     if (this.config.clientTEEConnection == null) {
-      throw new Error(
-        "clientTEEConnection must be provided in React Native environment"
-      );
+      const parsedAPIKey = validateAPIKey(this.config.crossmint.apiKey);
+      if (!parsedAPIKey.isValid) {
+        throw new Error("Invalid API key");
+      }
+      const iframeManager = new NcsIframeManager({
+        environment: parsedAPIKey.environment,
+      });
+      this.config.clientTEEConnection = await iframeManager.initialize();
     }
   }
 
